@@ -197,13 +197,7 @@ const rootOrCurrentChildren = computed(() => {
   return categoryStore.children[categoryId.value] || []
 })
 
-const rootCategories = computed(() => {
-  const all = categoryStore.children[0] || []
-  return all.filter(c => {
-    const subs = categoryStore.children[c.id]
-    return subs && subs.length > 0
-  })
-})
+const rootCategories = computed(() => categoryStore.children[0] || [])
 
 const products = computed(() => {
   if (categoryId.value !== null) {

@@ -24,8 +24,9 @@ export const useCategoryStore = defineStore('category', () => {
     try {
       loading.value = true
       error.value = null
-      const params: any = {}
-      if (parentId !== null) params.parent = parentId
+      const params: any = {
+        parent: parentId ?? 0
+      }
       const res = await api.get('/categories', { params })
       const items: Category[] = (res.data.items || []).map(adaptCategory)
       children[key] = items

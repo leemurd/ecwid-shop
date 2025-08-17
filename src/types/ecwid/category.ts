@@ -4,5 +4,5 @@ export interface Category {
   description?: string
   imageUrl?: string
   thumbnailUrl?: string
-  parent?: number | null
+  parentId: number | null
 }

@@ -1,15 +1,14 @@
 import type { Category } from '@/types/ecwid/category'
 import type { Product } from '@/types/ecwid/product'
-import type { CartItem } from '@/types/ecwid/cart'
 
-export function adaptCategory(raw: any): Category {
+export function adaptCategory(src: any): Category {
   return {
-    id: raw.id,
-    name: raw.name,
-    description: raw.description,
-    imageUrl: raw.imageUrl || raw.thumbnailUrl || undefined,
-    thumbnailUrl: raw.thumbnailUrl || raw.imageUrl || undefined,
-    parent: raw.parent ?? null,
+    id: src.id,
+    name: src.name,
+    description: src.description ?? '',
+    imageUrl: src.image?.url ?? src.imageUrl ?? undefined,
+    thumbnailUrl: src.thumbnailUrl ?? undefined,
+    parentId: typeof src.parentId === 'number' ? src.parentId : 0,
   }
 }
 
